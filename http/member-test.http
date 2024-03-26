@@ -1,0 +1,4 @@
+GET http://localhost:8002/member/hello
+Accept: application/json
+
+###
