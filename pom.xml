@@ -33,11 +33,23 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+            <!-- common模块 -->
             <dependency>
                 <groupId>com.lizl</groupId>
                 <artifactId>common</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <!-- 集成mybatis -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>3.0.3</version>
+            </dependency>
+            <!-- 集成mysql连接 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.30</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
