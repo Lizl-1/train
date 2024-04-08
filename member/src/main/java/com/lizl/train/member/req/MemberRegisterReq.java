@@ -1,5 +1,7 @@
 package com.lizl.train.member.req;
 
+import jakarta.validation.constraints.NotBlank;
+
 /**
  * @Author Lizl
  * @Description
@@ -8,6 +10,7 @@ package com.lizl.train.member.req;
  */
 public class MemberRegisterReq {
 
+    @NotBlank(message = "手机号不能为空")
     private String mobile;
 
 
