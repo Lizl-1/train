@@ -1,8 +1,10 @@
 package com.lizl.train.member.service;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.IdUtil;
 import com.lizl.train.common.exception.BusinessException;
 import com.lizl.train.common.exception.BusinessExceptionEnum;
+import com.lizl.train.common.util.SnowUtil;
 import com.lizl.train.member.domain.Member;
 import com.lizl.train.member.domain.MemberExample;
 import com.lizl.train.member.mapper.MemberMapper;
@@ -38,7 +40,7 @@ public class MemberService {
         }
 
         Member member = new Member();
-        member.setId(System.currentTimeMillis());
+        member.setId(SnowUtil.getSnowflakeNextId());
         member.setMobile(mobile);
         memberMapper.insert(member);
         return member.getId();
