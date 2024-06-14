@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 // 引入ant-design-vue组件和css样式
 import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
+import 'ant-design-vue/dist/reset.css'
 // 引入ant-design-vue图标
 import * as Icons from '@ant-design/icons-vue'
 

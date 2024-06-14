@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Pattern;
  * @Date 2024/4/8 下午2:18
  * @Version 1.0.0
  */
-public class MemberSendCondeReq {
+public class MemberSendCodeReq {
 
     @NotBlank(message = "手机号不能为空")
     @Pattern(regexp = "^1\\d{10}$", message = "手机号码格式错误")
@@ -26,7 +26,7 @@ public class MemberSendCondeReq {
 
     @Override
     public String toString() {
-        return "MemberSendCondeReq{" +
+        return "MemberSendCodeReq{" +
                 "mobile='" + mobile + '\'' +
                 '}';
     }
