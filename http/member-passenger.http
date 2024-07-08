@@ -1,9 +1,13 @@
+GET http://localhost:8002/member/passenger/query-list?page=1&size=1
+Accept: application/json
+token:{{token}}
+
+###
 POST http://localhost:8000/member/passenger/save
 Content-Type: application/json
 token:{{token}}
 
 {
-  "memberId": "1",
   "name": "test",
   "idCard": "4413985405804",
   "type": "1"

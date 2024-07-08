@@ -1,7 +1,7 @@
 package com.lizl.train.member.req;
 
+import com.lizl.train.common.req.PageReq;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
 
@@ -11,85 +11,24 @@ import java.util.Date;
  * @Date 2024/4/8 下午2:18
  * @Version 1.0.0
  */
-public class PassengerSaveReq {
+public class PassengerQueryReq extends PageReq {
 
-    private Long id;
     private Long memberId;
-    @NotBlank(message = "[姓名]不能为空")
-    private String name;
-    @NotBlank(message = "[身份证]不能为空")
-    private String idCard;
-    @NotBlank(message = "[旅客类型]不能为空")
-    private String type;
-    private Date createTime;
-    private Date updateTime;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getmemberId() {
+    public Long getMemberId() {
         return memberId;
     }
 
-    public void setmemberId(Long memberId) {
+    public void setMemberId(Long memberId) {
         this.memberId = memberId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getIdCard() {
-        return idCard;
-    }
-
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 
     @Override
     public String toString() {
-        return "PassengerSaveReq{" +
-                "id=" + id +
-                ", memberId=" + memberId +
-                ", name='" + name + '\'' +
-                ", idCard='" + idCard + '\'' +
-                ", type='" + type + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                '}';
+        final StringBuffer sb = new StringBuffer("PassengerQueryReq{");
+        sb.append("memberId=").append(memberId);
+        sb.append('}');
+        return sb.toString();
     }
 }

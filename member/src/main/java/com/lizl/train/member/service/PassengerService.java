@@ -3,7 +3,10 @@ package com.lizl.train.member.service;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.util.ObjectUtil;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lizl.train.common.context.LoginMemberContext;
+import com.lizl.train.common.resp.PageResp;
 import com.lizl.train.common.util.SnowUtil;
 import com.lizl.train.member.domain.Passenger;
 import com.lizl.train.member.domain.PassengerExample;
@@ -43,13 +46,23 @@ public class PassengerService {
         passengerMapper.insert(passenger);
     }
 
-    public List<PassengerQueryResp> queryList(PassengerQueryReq req) {
+    public PageResp<PassengerQueryResp> queryList(PassengerQueryReq req) {
         PassengerExample passengerExample= new PassengerExample();
         PassengerExample.Criteria criteria = passengerExample.createCriteria();
         if (ObjectUtil.isNotNull(req.getMemberId())) {
             criteria.andMemberIdEqualTo(req.getMemberId());
         }
+        LOG.info("查询当前页码：{}", req.getPage());
+        LOG.info("查询每页条数：{}", req.getSize());
+        PageHelper.startPage(req.getPage(), req.getSize());
         List<Passenger> passengersList = passengerMapper.selectByExample(passengerExample);
-        return BeanUtil.copyToList(passengersList, PassengerQueryResp.class);
+        PageInfo<Passenger> pageInfo = new PageInfo<>(passengersList);
+        LOG.info("总行数：{}", pageInfo.getTotal());
+        LOG.info("总页数：{}", pageInfo.getPages());
+        List<PassengerQueryResp> list = BeanUtil.copyToList(passengersList, PassengerQueryResp.class);
+        PageResp<PassengerQueryResp> pageResp = new PageResp<>();
+        pageResp.setTotal(pageInfo.getTotal());
+        pageResp.setList(list);
+        return pageResp;
     }
 }
